@@ -5,16 +5,20 @@ package org.example;
 // - A double member called grade
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BetterStudentManager {
     public List<Student> students = new ArrayList<>();
-
+String newLine = System.lineSeparator();
     public void addStudent(String name, double grade) {
+        Student student = new Student(name, grade);
+        students.add(student);
         // This method should add a new student to the list of students
     }
 
     public void removeStudent(String name) {
+        students.removeIf(student -> student.name.equals(name));
         // This method should remove the student with the given name from the list of students
     }
 
@@ -29,6 +33,10 @@ public class BetterStudentManager {
         // looping through the list of students
         //
         // Replace the following line with your implementation
-        return null;
+        StringBuilder result = new StringBuilder();
+        for(Student student : students){
+            result.append(student.name).append(" ").append(student.grade).append("\n");
+        }
+        return result.toString();
     }
 }
